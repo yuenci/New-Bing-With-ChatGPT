@@ -22,3 +22,9 @@ def get_response(message: str) -> str:
     chatbot.conversation_id = response["conversation_id"]
     chatbot.parent_id = response["parent_id"]
     return response["message"]
+
+
+def refresh_session(session_token):
+    chatbot.session_token = session_token
+    with open('config.json', 'w') as f:
+        json.dump({"session_token": session_token}, f)
