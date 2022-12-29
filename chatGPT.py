@@ -1,8 +1,3 @@
-
-# https://github.com/acheong08/ChatGPT/wiki/Setup
-# https://github.com/mpociot/chatgpt-vscode
-# pip3 install --upgrade revChatGPT
-
 from revChatGPT.ChatGPT import Chatbot
 import json
 

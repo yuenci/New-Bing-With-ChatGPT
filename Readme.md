@@ -1,48 +1,82 @@
-https://github.com/acheong08/ChatGPT/wiki/Setup
+`<a name="readme-top"></a>`
 
-# 在客户端上
+# Paper-Partner
+
+![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/iuricode/README-template?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/iuricode/README-template?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/README-template?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/README-template?style=for-the-badge)
+
+![image](https://user-images.githubusercontent.com/33682384/209968467-d775f977-b922-445c-bdae-36b50f235926.png)
+
+> Additional line of informative text about what the project does. Its introduction should have about 2 or 3 lines. Don't overdo it, people won't read it.
+
+### Adjustments and improvements
+
+The project is still under development and the next updates will be focused on the following tasks:
+
+- [X] Task 1
+- [X] Task 2
+- [X] Task 3
+- [ ] Task 4
+- [ ] Task 5
+
+## 💻 Prerequisites
+
+Before you begin, make sure that you have met the following requirements:
+
+<!---These are just example requirements. Add, duplicate or remove as needed--->
+
+* You have installed the latest version of <language/dependency/required>
+* You have a machine <Windows /Linux/Mac>. Indicate which operating system is compatible/not compatible.
+* You have <guide /link/documentação_relacionada_ao_projeto>.
+
+## 🚀 Installing
+
+To install this project, follow these steps:
 
 ```bash
 $ pip3 install --upgrade revChatGPT
+$ pip install fastapi[all]
 ```
 
-```python
-from revChatGPT.ChatGPT import Chatbot
+## ☕ Usecase
 
-chatbot = Chatbot({
-    "session_token": "<token>"
-}, conversation_id=None, parent_id=None)  # You can start a custom conversation
-
-# You can specify custom conversation and parent ids. Otherwise it uses the saved conversation (yes. conversations are automatically saved)
-response = chatbot.ask("explain what is China",
-                       conversation_id=None, parent_id=None)
-
-print(response)
-```
-
-在此处获得token
-
-![1672253082724](image/Readme/1672253082724.png)
-
-# 在服务器端
-
-xvfb允许在无图形用户界面的系统上运行图形化程序。
-
-```bash
-$ sudo apt-get update
-$ sudo apt-get install xvfb
+To use this project, follow these steps:
 
 ```
+//command
+```
 
-不过因为cloudfare的限制，这个几乎不再可用
+Add execution commands and examples that you think users will find useful. Provides a reference ofoptions for bonus points!
 
-conversation_id 指的是同一个对话的编号
+## 📫 Contributing
 
-parent_id 指的是上一个句子的编号
+To contribute this project, follow these steps:
 
-https://github.com/acheong08/ChatGPT/issues/7
+1. Fork this repository.
+2. Crie um branch: `git checkout -b <some_branch>`
+3. Make your changes and confirm them: `git commit -m <message_commit>`
+4. Push to the original branch: `git push origin <peoject_name> / <local>`
+5. Create the pull request.
 
-https://aistudio.baidu.com/aistudio/projectdetail/5229445?channelType=0&channel=0
+Alternatively, see the GitHub documentation on how to [create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
+## 🤝 Collaborations
 
-https://www.google.com/search?q=what+are+conversation_id+%EF%BC%8C+parent_id+in+chatgpt&oq=what+are+conversation_id+%EF%BC%8C+parent_id++in+chatgpt&aqs=chrome..69i57.14396j0j4&sourceid=chrome&ie=UTF-8
+<a href="https://github.com/yuenci" target="_blank" >
+  <img src="https://github.com/yuenci/Laptop-Repair-Services-Management-System/blob/master/image/avatar-innis.png" alt="profile image" width="60px">
+</a>
+
+Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+
+## 😄 Be one of the contributors
+
+Want to be part of this project? Click HERE and read how to contribute.
+
+## 📝 License
+
+This project is under license. See the [LICENSE](./LICENSE) file for more details.
+
+<p >(<a href="#readme-top">⬆ Back to top</a>)</p>
