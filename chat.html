@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button>Click</button>
+    <div id="container"></div>
+    <script>
+        let inputBox = document.querySelector('input');
+        let button = document.querySelector('button');
+        let container = document.querySelector('#container');
+
+        button.addEventListener('click', () => {
+            let inputext = inputBox.value;
+            let newcard = document.createElement('div');
+            newcard.innerHTML = "You:" + inputext;
+            container.appendChild(newcard);
+
+            let conversation_id = localStorage.getItem('conversation_id');
+            let parent_id = localStorage.getItem('parent_id');
+
+            if (!conversation_id || !parent_id) {
+                conversation_id = "";
+                parent_id = "";
+            }
+
+            if (conversation_id === "undefined" || parent_id === "undefined") {
+                conversation_id = "";
+                parent_id = "";
+            }
+
+            askGpt3(inputext, conversation_id, parent_id);
+        })
+
+        function askGpt3(message, conversation_id, parent_id) {
+            let data = {
+                "conversation_id": conversation_id,
+                "parent_id": parent_id,
+                "message": message
+            }
+
+            // fetch post request http://127.0.0.1:5000/chat
+            fetch('http://127.0.0.1:5000/chat',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    let newcard = document.createElement('div');
+                    newcard.innerHTML = "GPT3:" + data.message;
+                    container.appendChild(newcard);
+                    localStorage.setItem('conversation_id', data.conversation_id);
+                    localStorage.setItem('parent_id', data.parent_id);
+                })
+        }
+    </script>
+</body>
+
+</html>

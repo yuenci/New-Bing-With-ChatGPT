@@ -1,4 +1,4 @@
-from revChatGPT.ChatGPT import Chatbot
+from revChatGPT.V1 import Chatbot
 import json
 
 # import config.json
@@ -6,17 +6,27 @@ with open('config.json') as f:
     session_token = json.load(f).get('session_token')
 
 
-chatbot = Chatbot({
-    "session_token": session_token
-}, conversation_id=None, parent_id=None)
+chatbot = Chatbot(config={
+    "access_token": session_token
+})
 
 
-def get_response(message: str) -> str:
-    response = chatbot.ask(message,
-                           chatbot.conversation_id, chatbot.parent_id)
-    chatbot.conversation_id = response["conversation_id"]
-    chatbot.parent_id = response["parent_id"]
-    return response["message"]
+def get_response(message: str, conversation_id: str, parent_id: str) -> str:
+    responseData = {}
+    for data in chatbot.ask(
+        message, conversation_id, parent_id
+    ):
+        responseData = data
+
+    response = responseData["message"]
+    conversation_id = responseData["conversation_id"]
+    parent_id = responseData["parent_id"]
+
+    return {
+        "message": response,
+        "conversation_id": conversation_id,
+        "parent_id": parent_id
+    }
 
 
 def refresh_session(session_token):
