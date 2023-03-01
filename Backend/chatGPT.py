@@ -2,7 +2,7 @@ from revChatGPT.V1 import Chatbot
 import json
 
 # import config.json
-with open('config.json') as f:
+with open('Backend/conf.json') as f:
     session_token = json.load(f).get('session_token')
 
 

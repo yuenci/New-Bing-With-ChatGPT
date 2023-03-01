@@ -19,7 +19,8 @@
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    'Access-Control-Allow-Origin': '*', // CORS
                 }
             }).then(res => res.json())
                 .then(data => {

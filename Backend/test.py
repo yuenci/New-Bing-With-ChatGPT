@@ -2,7 +2,7 @@ from revChatGPT.V1 import Chatbot
 import json
 
 
-with open('config.json') as f:
+with open('Backend/conf.json') as f:
     session_token = json.load(f).get('session_token')
 chatbot = Chatbot(config={
     "access_token": session_token
@@ -19,6 +19,7 @@ for i in range(10):
         prompt, conversation_id, parent_id
     ):
         responseData = data
+        print(data)
 
     prev_text = responseData["message"]
     conversation_id = responseData["conversation_id"]
