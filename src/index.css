@@ -81,6 +81,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  padding: 0 30px;
 }
 
 #bing-icon {
@@ -189,9 +191,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #cccccc;
+  background-color: #fff;
   border-radius: 6px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .tone-card div:first-child {
