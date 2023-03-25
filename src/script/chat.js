@@ -48,7 +48,8 @@ function addEvent(dom) {
         bloomCon.find('div').hide();
         bloomCon.attr('class', 'bloom-con-shorten');
         chatCon.css('width', 'calc(100%)');
-        chatCon.attr('class', 'chat-input-con-expand');
+        // chatCon.attr('class', 'chat-input-con-expand');
+        setChatConClass();
         wordCount.css('opacity', '1');
     });
 
@@ -73,21 +74,21 @@ function addEvent(dom) {
     });
 
     $(chatInput).on("input", function () {
-        if ($(chatInput).val().length > 0) {
+        let textLength = $(chatInput).val().length;
+        if (textLength > 0) {
             $(sendIcon).css('opacity', '1');
             wordCountText.text($(chatInput).val().length + '/2000');
-            // $(sendIcon).css('color', '#FFB300');
-        } else {
+        } else if (textLength == 0) {
             $(sendIcon).css('opacity', '0');
-            // $(sendIcon).css('color', 'black');
+            wordCountText.text('0/2000');
+        } else if (textLength > 2000) {
+            wordCountText.text('2000/2000');
+            chatInput.val(chatInput.val().substring(0, 2000));
         }
     });
 
 
-    $(pinedIcon).click(function () {
-        chatCon.css('height', '200px');
-        // chatCon.css()
-    });
+    $(pinedIcon).click(expandChat);
 
     // $(bloomCon).on('click', function () {
     //     $(chatInput).focus();
@@ -114,6 +115,28 @@ function addEvent(dom) {
     //         }
     //     }
     // });
+}
+
+function expandChat() {
+    let chatConClass = chatCon.attr('class');
+    if (chatConClass === "chat-input-con-expand") {
+        chatCon.attr('class', 'chat-input-con-expand-plus');
+        wordCount.attr('class', 'word-count-plus');
+        chatInput.attr('class', 'chat-input-plus');
+    } else {
+        chatCon.attr('class', 'chat-input-con-expand');
+        wordCount.attr('class', '');
+        chatInput.attr('class', '');
+    }
+}
+
+function setChatConClass() {
+    let chatConClass = chatCon.attr('class');
+    console.log(chatConClass);
+    if (chatConClass == undefined) {
+        chatCon.attr('class', 'chat-input-con-expand');
+    }
+
 }
 
 pubsub.subscribe('chat', function (data) {

@@ -302,6 +302,7 @@ body {
 
 #chat-right {
   width: 100%;
+  position: relative;
 }
 
 #chat-input-con {
@@ -315,10 +316,30 @@ body {
   border-radius: 24px;
   box-sizing: border-box;
   padding: 0 15px;
+  transition: 0.5s;
 }
 
 .chat-input-con-expand {
   border-radius: 12px 12px 0 0 !important;
+}
+
+.chat-input-con-expand-plus {
+  border-radius: 12px 12px 0 0 !important;
+  position: absolute;
+  bottom: -45px;
+  height: 200px !important;
+  align-items: flex-start !important;
+  padding: 15px !important;
+  transition: 0.5s;
+}
+
+.word-count-plus {
+  position: absolute;
+  bottom: -85px;
+}
+
+.chat-input-plus {
+  height: 200px !important;
 }
 
 #chat-input {
@@ -329,7 +350,10 @@ body {
   font-size: 14px;
   font-family: Roboto, Helvetica, sans-serif;
   resize: none;
+}
 
+#chat-input::-webkit-scrollbar {
+  width: 0;
 }
 
 #feedback-container {
@@ -402,6 +426,8 @@ body {
   border-radius: 0 0 12px 12px;
   opacity: 0;
 }
+
+
 
 #word-count-icon {
   width: 20px;
