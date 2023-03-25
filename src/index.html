@@ -14,12 +14,98 @@
 
 <body>
   <div id="root">
-    <div id="welcome-container">
-
+    <div>
+      <div id="welcome-header">
+        <div id="welcome-header-left">
+          <img src="./image/microsoft.png" id="microsoft-icon">
+          <div class="welcome-header-icon-con">
+            <img src="./image/search0.svg">
+            <div>SRAECH</div>
+          </div>
+          <div class="welcome-header-icon-con"">
+                      <img src=" ./image/chat0.svg">
+            <div>CHAT</div>
+          </div>
+        </div>
+        <div id="welcome-header-right">
+          <img src="./image/menu0.png">
+        </div>
+      </div>
+      <div id="welcome-body">
+        <img src="./image/bing.svg" id="bing-icon">
+        <h1>Welcome to the new Bing</h1>
+        <div>Your AI-powered copilot for the web.</div>
+        <div id="card-container">
+          <div class="demo-card">
+            <div class="card-title">🧐 Ask complex questions</div>
+            <div class="card-content">"What are some meals I can make for my picky toddler who only eats orange-colored
+              food?"</div>
+          </div>
+          <div class="demo-card">
+            <div class="card-title">🙌 Get better answers</div>
+            <div class="card-content">"What are the pros and cons of the top 3 selling pet vacuums?"</div>
+          </div>
+          <div class="demo-card">
+            <div class="card-title">🎨 Get creative inspiration</div>
+            <div class="card-content">Write a haiku about crocodiles in outer space in the voice of a pirate</div>
+          </div>
+        </div>
+        <div>
+          Let's learn together. Bing is powered by AI, so surprises and mistakes are possible. Make sure to check the
+          facts, and
+          <a href="">share feedback</a>
+          so we can learn and improve!
+        </div>
+      </div>
+      <div id="welcome-bottom">
+        <a href="">Terms of Use</a>
+        <span> | </span>
+        <a href="">Privacy Statement</a>
+      </div>
+    </div>
+    <div id="tone-container">
+      <div>Choose a conversation style</div>
+      <div id="tone-con">
+        <div class="tone-card">
+          <div>More</div>
+          <div>Creative</div>
+        </div>
+        <div class="tone-card">
+          <div>More</div>
+          <div>Balanced</div>
+        </div>
+        <div class="tone-card">
+          <div>More</div>
+          <div>Precise</div>
+        </div>
+      </div>
     </div>
 
+    <div id="loadding-container">
+      <div id="loading-con">
+        <div id="loading-icon"></div>
+        <div>Stop Responding</div>
+      </div>
+    </div>
+
+    <div id="chat-container">
+      <div id="bloom-con">
+        <img src="./image/broom.svg" id="bloom-icon">
+        <div>New topic</div>
+      </div>
+      <div id="chat-input-con">
+        <img src="./image/chat.svg" id="chat-icon">
+        <input type="text" placeholder="Ask me anything..." id="chat-input">
+      </div>
+    </div>
+
+
+    <div id="feedback-container">
+      <img src="./image/feedback.svg" id="feedback-icon">
+      <div>Feedback</div>
+    </div>
+    <script src="./script/scrpt.js" type="module"></script>
   </div>
-  <script src="./script/scrpt.js" type="module"></script>
 </body>
 
 </html>
