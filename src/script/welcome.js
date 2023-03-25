@@ -53,6 +53,8 @@ export default function AddWelcome() {
   welcome.innerHTML = content;
   document.body.appendChild(welcome);
   addEvent(welcome);
+
+  document.getElementsByClassName("welcome-header-icon-con")[1].click();
 }
 
 function addEvent(dom) {
@@ -98,3 +100,5 @@ function addEvent(dom) {
     }
   });
 }
+
+
