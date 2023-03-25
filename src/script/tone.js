@@ -1,4 +1,4 @@
-import { color } from "./StatusContainer.js";
+import { color, pubsub } from "./StatusContainer.js";
 
 export default function AddTone() {
   let content =
@@ -39,6 +39,7 @@ function addEvent(dom) {
     clearBGC();
     $(this).css('background', color[$(this).find('div').eq(1).text().toLowerCase()]);
     $(this).css('color', 'white');
+    pubsub.publish('chat', { message: $(this).find('div').eq(1).text().toLowerCase() });
   });
 }
 

@@ -2,8 +2,39 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: aqua;
+  width: 100vw;
+  height: 100vh;
   font-family: Roboto, Helvetica, sans-serif;
+  background-image:
+    radial-gradient(61.04% 89.69% at 100% 100%, rgba(200, 250, 255, 0.08) 0%, rgba(28, 210, 229, 0.08) 40.63%, rgba(28, 210, 229, 0) 100%),
+    radial-gradient(43.78% 64.34% at 60.31% 100%, rgba(23, 74, 228, 0.08) 0%, rgba(23, 74, 228, 0) 100%),
+    linear-gradient(180deg, rgba(23, 74, 228, 0) 29.44%, rgba(23, 74, 228, 0.06) 100%),
+    linear-gradient(90deg, #F3F3F7 0%, #EBF0F9 100%);
+  overflow: hidden;
+}
+
+.linear-creative {
+  background-image:
+    radial-gradient(61.04% 89.69% at 100% 100%, rgba(200, 250, 255, 0.08) 0%, rgba(28, 210, 229, 0.08) 40.63%, rgba(28, 210, 229, 0) 100%),
+    radial-gradient(43.78% 64.34% at 60.31% 100%, rgba(23, 74, 228, 0.08) 0%, rgba(23, 74, 228, 0) 100%),
+    linear-gradient(180deg, rgba(23, 74, 228, 0) 29.44%, rgba(23, 74, 228, 0.06) 100%),
+    linear-gradient(90deg, #F3F3F7 0%, #EBF0F9 100%);
+}
+
+.linear-balanced {
+  background-image:
+    radial-gradient(61.04% 89.69% at 100% 100%, rgba(200, 250, 255, 0.08) 0%, rgba(28, 210, 229, 0.08) 40.63%, rgba(28, 210, 229, 0) 100%),
+    radial-gradient(43.78% 64.34% at 60.31% 100%, rgba(23, 74, 228, 0.08) 0%, rgba(23, 74, 228, 0) 100%),
+    linear-gradient(180deg, rgba(23, 74, 228, 0) 29.44%, rgba(23, 74, 228, 0.06) 100%),
+    linear-gradient(90deg, #F3F3F7 0%, #EBF0F9 100%);
+}
+
+.linear-precise {
+  background-image:
+    radial-gradient(61.04% 89.69% at 100% 100%, rgba(200, 250, 255, 0.08) 0%, rgba(28, 210, 229, 0.08) 40.63%, rgba(28, 210, 229, 0) 100%),
+    radial-gradient(43.78% 64.34% at 60.31% 100%, rgba(23, 74, 228, 0.08) 0%, rgba(23, 74, 228, 0) 100%),
+    linear-gradient(180deg, rgba(23, 74, 228, 0) 29.44%, rgba(23, 74, 228, 0.06) 100%),
+    linear-gradient(90deg, #F3F3F7 0%, #EBF0F9 100%);
 }
 
 #container {
@@ -14,12 +45,12 @@ body {
 
 /* welcome */
 /* #welcome-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
+  margin-top: 35px;
 } */
+
+#root {
+  height: 35px;
+}
 
 #welcome-header {
   display: flex;
@@ -27,7 +58,6 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 35px;
   padding: 0 30px;
   height: 30px;
   box-sizing: border-box;
@@ -139,7 +169,7 @@ body {
 }
 
 
-#bloom-con {
+/* #bloom-con {
   width: 140px;
   height: 48px;
   display: flex;
@@ -148,7 +178,8 @@ body {
   align-items: center;
   box-sizing: border-box;
   padding: 10px;
-}
+  cursor: pointer;
+} */
 
 #bloom-icon {
   width: 32px;
@@ -160,6 +191,30 @@ body {
   width: 20px;
   height: 20px;
   padding-right: 15px;
+}
+
+
+#arrow-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#arrow-icon svg {
+  fill: #75306c;
+}
+
+.arrow-icon-creative {
+  fill: #75306c !important;
+}
+
+.arrow-icon-balanced {
+  fill: #174ae4 !important;
+}
+
+.arrow-icon-precise {
+  fill: #006880 !important;
 }
 
 #tone-container {
@@ -201,13 +256,35 @@ body {
   font-size: 10px;
 }
 
-#bloom-con {
+.bloom-con-expand {
   width: 140px;
   height: 48px;
   background-color: #8d3482;
   border-radius: 24px;
   color: white;
   margin-right: 10px;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.bloom-con-shorten {
+  width: 48px;
+  height: 48px;
+  background-color: #8d3482;
+  border-radius: 50%;
+  color: white;
+  margin-right: 10px;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
 }
 
 #chat-container {
@@ -230,7 +307,7 @@ body {
   height: 48px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   border-radius: 24px;
   box-sizing: border-box;
@@ -238,7 +315,7 @@ body {
 }
 
 #chat-input {
-  width: 100%;
+  width: calc(100% - 70px);
   height: 80%;
   border: none;
   outline: none;
@@ -263,6 +340,10 @@ body {
 #feedback-icon {
   width: 14px;
   margin-right: 5px;
+}
+
+#feedback-icon svg {
+  fill: #8d3482;
 }
 
 #loading-container {
