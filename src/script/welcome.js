@@ -1,6 +1,6 @@
-export default function AddWelcome() {
+import { loadChatPage } from './scrpt.js';
+export function AddHeader(type = "chat") {
   let content = `
-      <div id="welcome-header">
       <div id="welcome-header-left">
         <img src="./image/microsoft.png" id="microsoft-icon">
         <div class="welcome-header-icon-con">
@@ -14,8 +14,39 @@ export default function AddWelcome() {
       </div>
       <div id="welcome-header-right">
         <img src="./image/menu0.png">
-      </div>
-    </div>
+      </div>`;
+  let header = document.createElement('div');
+  header.id = 'welcome-header';
+  header.innerHTML = content;
+  document.body.appendChild(header);
+  addHeaderEvent(header);
+  active(type);
+}
+
+function addHeaderEvent(dom) {
+  let container = $(dom);
+  let searchIconConatiner = container.find('.welcome-header-icon-con').eq(0);
+  let searchIcon = searchIconConatiner.find('img');
+  let searchText = searchIcon.find('div');
+  let chatIconConatiner = container.find('.welcome-header-icon-con').eq(1);
+  let chatIcon = chatIconConatiner.find('img');
+  let chatText = chatIcon.find('div');
+  let menuIcon = container.find('#welcome-header-right').find('img');
+
+  searchIconConatiner.click(function () {
+    // console.log('searchIconConatiner click');
+    searchActive();
+  });
+
+  chatIconConatiner.click(function () {
+    // console.log('chatIconConatiner click');
+    chatActive();
+  });
+}
+
+export function AddWelcome() {
+  AddHeader();
+  let content = `
     <div id="welcome-body">
       <img src="./image/bing.svg" id="bing-icon">
       <h1>Welcome to the new Bing</h1>
@@ -52,25 +83,29 @@ export default function AddWelcome() {
   welcome.id = 'welcome-container';
   welcome.innerHTML = content;
   document.body.appendChild(welcome);
-  addEvent(welcome);
 
-  document.getElementsByClassName("welcome-header-icon-con")[1].click();
+}
+function chatActive() {
+  loadChatPage();
 }
 
-function addEvent(dom) {
-  // use jquery to add event
-  let container = $(dom);
+
+function searchActive() {
+  $("body").empty();
+  AddHeader("search");
+}
+
+
+function active(type) {
+  let container = $('#welcome-header');
+  let searchIcon = container.find('.welcome-header-icon-con').eq(0).find('img');
+  let searchText = container.find('.welcome-header-icon-con').eq(0).find('div');
   let searchIconConatiner = container.find('.welcome-header-icon-con').eq(0);
-  let searchIcon = searchIconConatiner.find('img');
-  let searchText = searchIcon.find('div');
-
+  let chatIcon = container.find('.welcome-header-icon-con').eq(1).find('img');
+  let chatText = container.find('.welcome-header-icon-con').eq(1).find('div');
   let chatIconConatiner = container.find('.welcome-header-icon-con').eq(1);
-  let chatIcon = chatIconConatiner.find('img');
-  let chatText = chatIcon.find('div');
 
-  let menuIcon = container.find('#welcome-header-right').find('img');
-
-  searchIconConatiner.click(function () {
+  if (type == "search") {
     searchIcon.attr('src', './image/search1.svg');
     searchText.css('font-weight', 'bold');
     searchIconConatiner.css("border-bottom", "3px solid #174ae4");
@@ -78,27 +113,14 @@ function addEvent(dom) {
     chatIcon.attr('src', './image/chat0.svg');
     chatText.css('font-weight', 'normal');
     chatIconConatiner.css("border-bottom", "3px solid transparent");
-  });
-
-
-  chatIconConatiner.click(function () {
-    chatIcon.attr('src', './image/chat1.svg');
-    chatText.css('font-weight', 'bold');
-    chatIconConatiner.css("border-bottom", "3px solid #174ae4");
-
+  }
+  else if (type == "chat") {
     searchIcon.attr('src', './image/search0.svg');
     searchText.css('font-weight', 'normal');
     searchIconConatiner.css("border-bottom", "3px solid transparent");
-  });
 
-  menuIcon.click(function () {
-    if (container.find('#welcome-header-right').find('img').attr('src') == './image/menu0.png') {
-      container.find('#welcome-header-right').find('img').attr('src', './image/menu1.png');
-    }
-    else {
-      container.find('#welcome-header-right').find('img').attr('src', './image/menu0.png');
-    }
-  });
+    chatIcon.attr('src', './image/chat1.svg');
+    chatText.css('font-weight', 'bold');
+    chatIconConatiner.css("border-bottom", "3px solid #174ae4");
+  }
 }
-
-
