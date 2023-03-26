@@ -67,12 +67,12 @@ function addHeaderEvent(dom) {
 
 
     let src = $(this).attr('src');
-    if (src == './image/menu0.png') {
-      $(this).attr('src', './image/menu1.png');
+    if (src == "./image/menu0.png") {
+      $(this).attr('src', "./image/menu1.png");
       menu.show();
     }
     else {
-      $(this).attr('src', './image/menu0.png');
+      $(this).attr('src', "./image/menu0.png");
       menu.hide();
     }
   });
@@ -142,20 +142,20 @@ function active(type) {
   let chatIconConatiner = container.find('.welcome-header-icon-con').eq(1);
 
   if (type == "search") {
-    searchIcon.attr('src', './image/search1.svg');
+    searchIcon.attr('src', "./image/search1.svg");
     searchText.css('font-weight', 'bold');
     searchIconConatiner.css("border-bottom", "3px solid #174ae4");
 
-    chatIcon.attr('src', './image/chat0.svg');
+    chatIcon.attr('src', "./image/chat0.svg");
     chatText.css('font-weight', 'normal');
     chatIconConatiner.css("border-bottom", "3px solid transparent");
   }
   else if (type == "chat") {
-    searchIcon.attr('src', './image/search0.svg');
+    searchIcon.attr('src', "./image/search0.svg");
     searchText.css('font-weight', 'normal');
     searchIconConatiner.css("border-bottom", "3px solid transparent");
 
-    chatIcon.attr('src', './image/chat1.svg');
+    chatIcon.attr('src', "./image/chat1.svg");
     chatText.css('font-weight', 'bold');
     chatIconConatiner.css("border-bottom", "3px solid #174ae4");
   }
