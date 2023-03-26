@@ -4,7 +4,17 @@ body {
   margin: 0;
   width: 100vw;
   height: 100%;
-  font-family: Roboto, Helvetica, sans-serif;
+  font-family: -apple-system,
+    Roboto,
+    SegoeUI,
+    "Segoe UI",
+    "Helvetica Neue",
+    Helvetica,
+    "Microsoft YaHei",
+    "Meiryo UI",
+    Meiryo,
+    Arial Unicode MS,
+    sans-serif;
   background-image:
     radial-gradient(61.04% 89.69% at 100% 100%, rgba(200, 250, 255, 0.08) 0%, rgba(28, 210, 229, 0.08) 40.63%, rgba(28, 210, 229, 0) 100%),
     radial-gradient(43.78% 64.34% at 60.31% 100%, rgba(23, 74, 228, 0.08) 0%, rgba(23, 74, 228, 0) 100%),
@@ -45,9 +55,9 @@ body {
 }
 
 /* welcome */
-/* #welcome-container {
-  margin-top: 35px;
-} */
+#welcome-container {
+  user-select: none;
+}
 
 #root {
   height: 35px;
@@ -62,6 +72,7 @@ body {
   padding: 0 30px;
   height: 30px;
   box-sizing: border-box;
+  user-select: none;
 }
 
 #welcome-header-left {
@@ -69,6 +80,10 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+#welcome-body-subtitle {
+  height: 65px;
 }
 
 #microsoft-icon {
@@ -170,21 +185,24 @@ body {
 }
 
 
-/* #bloom-con {
-  width: 140px;
+#bloom-con {
+  /* width: 140px;
   height: 48px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 10px; */
   cursor: pointer;
-} */
+  transition: 0.3s;
+  user-select: none;
+}
 
 #bloom-icon {
   width: 32px;
   height: 32px;
+  user-select: none;
 }
 
 
@@ -192,6 +210,7 @@ body {
   width: 20px;
   height: 20px;
   padding-right: 15px;
+  user-select: none;
 }
 
 
@@ -225,6 +244,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  user-select: none;
 }
 
 #tone-con {
@@ -271,6 +291,7 @@ body {
   align-items: center;
   box-sizing: border-box;
   padding: 10px;
+
 }
 
 .bloom-con-shorten {
@@ -369,6 +390,7 @@ body {
   bottom: 0;
   right: 0;
   border: 1px solid #8d3482;
+  user-select: none;
 }
 
 #feedback-icon {
@@ -426,6 +448,7 @@ body {
   background-color: white;
   border-radius: 0 0 12px 12px;
   opacity: 0;
+  cursor: none;
 }
 
 

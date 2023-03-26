@@ -19,7 +19,7 @@ export default function AddWelcome() {
     <div id="welcome-body">
       <img src="./image/bing.svg" id="bing-icon">
       <h1>Welcome to the new Bing</h1>
-      <div>Your AI-powered copilot for the web.</div>
+      <div id="welcome-body-subtitle">Your AI-powered copilot for the web.</div>
       <div id="card-container">
         <div class="demo-card">
           <div class="card-title">🧐 Ask complex questions</div>
