@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, Tray, globalShortcut, screen } = require('electron');
+const { app, BrowserWindow, Menu, Tray, globalShortcut, screen, ipcMain, shell } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -7,13 +7,15 @@ if (require('electron-squirrel-startup')) {
 }
 
 let mainWindow;
+let searchBar;
 
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 1000,
     webPreferences: {
+      nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
@@ -22,7 +24,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // hide window instead of close
   mainWindow.on('close', function (event) {
@@ -42,6 +44,12 @@ const createSearchBar = () => {
     height: 50,
     frame: false,
     transparent: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+    show: false,
+    resizable: false,
   });
 
   searchBar.loadFile(path.join(__dirname, 'searchBar.html'));
@@ -52,6 +60,10 @@ const createSearchBar = () => {
   const x = Math.floor((width - searchBar.getSize()[0]) / 2)
   const y = 0
   searchBar.setPosition(x, y)
+
+  searchBar.once('ready-to-show', () => {
+    searchBar.show();
+  })
 };
 
 // This method will be called when Electron has finished
@@ -103,7 +115,13 @@ app.whenReady().then(() => {
   const contextMenu = Menu.buildFromTemplate([
     { label: 'Item1' },
     { label: 'Item2', },
-    { label: 'Item3' },
+    {
+      label: 'Show Search Bar',
+      click: () => {
+        searchBar.show();
+        searchBar.focus();
+      }
+    },
     {
       label: 'Quit', click: () => {
         console.log("quit")
@@ -126,3 +144,26 @@ app.whenReady().then(() => {
 })
 
 
+
+// IPC: inter-process communication
+
+ipcMain.on('open-url', (event, url) => {
+  shell.openExternal(url);
+});
+
+ipcMain.on('close-searchBar', (event, val) => {
+  searchBar.hide();
+});
+
+
+ipcMain.on('show-mainWin', (event, val) => {
+  if (mainWindow.isVisible()) {
+    return;
+  }
+  mainWindow.show();
+});
+
+ipcMain.on('chat', (event, message) => {
+  let msg = message;
+  BrowserWindow.getFocusedWindow().webContents.send('userMsg', msg);
+});

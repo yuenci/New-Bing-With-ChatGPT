@@ -1,3 +1,5 @@
+import { pubsub } from "./StatusContainer.js";
+
 export default function AddMessage() {
     let content =
         `<div id="message-con"></div>
@@ -35,3 +37,9 @@ export function scrollToBottom() {
     let bottom = document.querySelector('#message-bottom');
     bottom.scrollIntoView({ behavior: 'smooth' });
 }
+
+
+pubsub.subscribe('clean', (msg, data) => {
+    let container = document.querySelector('#message-con');
+    container.innerHTML = '';
+});

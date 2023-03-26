@@ -1,3 +1,4 @@
+
 import { color, icon, pubsub } from "./StatusContainer.js";
 import { addNewMsg } from "./message.js";
 import chatGPT from "./chatGPT.js";
@@ -64,6 +65,9 @@ function addEvent(dom) {
 
     $(bloomCon).click(function () {
         console.log('bloomCon click');
+        pubsub.publish('clean', {});
+        wordCountText.text('0/2000');
+        chatInput.val('');
     });
 
 
@@ -170,7 +174,7 @@ function textAreaInputEvent() {
     detectTextAreaHeight();
 }
 
-pubsub.subscribe('chat', function (data) {
+pubsub.subscribe('tone', function (data) {
     //console.log(color[data.message]);
     bloomCon.css('background', color[data.message])
     $("body").attr("class", `linear-${data.message}`);
@@ -178,3 +182,6 @@ pubsub.subscribe('chat', function (data) {
     $("#feedback-icon svg").attr("class", `arrow-icon-${data.message}`);
     $("#feedback-container").css("border-color", icon[data.message]);
 });
+
+
+localStorage.setItem('chatGPT2', 'true');

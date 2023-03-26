@@ -2,6 +2,6 @@
 - [X] global hotkey
 - [ ] search bar
 - [ ] history(indexDB, [aircode](https://aircode.io/dashboard))
-- [ ] background running
+- [X] background running
 - [ ] start with system
 - [ ] settings
