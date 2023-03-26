@@ -1,4 +1,5 @@
 import { color, icon, pubsub } from "./StatusContainer.js";
+import { addNewMsg } from "./message.js";
 
 export default function AddChat() {
     let content = `
@@ -43,12 +44,9 @@ function addEvent(dom) {
 
     $(chatInput).on('focus', function () {
         console.log('focus');
-        // $(bloomCon).css('background', '#F2F2F2');
-        // $(bloomIcon).attr('src', './image/broom-active.svg');
         bloomCon.find('div').hide();
         bloomCon.attr('class', 'bloom-con-shorten');
         chatCon.css('width', 'calc(100%)');
-        // chatCon.attr('class', 'chat-input-con-expand');
         setChatConClass();
         wordCount.css('opacity', '1');
     });
@@ -63,58 +61,22 @@ function addEvent(dom) {
     });
 
 
-    $(chatCon).hover(function () {
-        //
-    });
-
-
-    $(chatInput).on('blur', function () {
-        // $(bloomCon).css('background', 'white');
-        // $(bloomIcon).attr('src', './image/broom.svg');
-    });
-
-    $(chatInput).on("input", function () {
-        let textLength = $(chatInput).val().length;
-        if (textLength > 0) {
-            $(sendIcon).css('opacity', '1');
-            wordCountText.text($(chatInput).val().length + '/2000');
-        } else if (textLength == 0) {
-            $(sendIcon).css('opacity', '0');
-            wordCountText.text('0/2000');
-        } else if (textLength > 2000) {
-            wordCountText.text('2000/2000');
-            chatInput.val(chatInput.val().substring(0, 2000));
-        }
-    });
+    $(chatInput).on("input", textAreaInputEvent);
 
 
     $(pinedIcon).click(expandChat);
 
-    // $(bloomCon).on('click', function () {
-    //     $(chatInput).focus();
-    // });
-
-
-
-    // $(sendIcon).on('click', function () {
-    //     let chat = $(chatInput).val();
-    //     if (chat.length > 0) {
-    //         $(chatInput).val('');
-    //         $(chatInput).focus();
-    //         sendChat(chat);
-    //     }
-    // });
-
-    // $(chatInput).on('keyup', function (e) {
-    //     if (e.keyCode == 13) {
-    //         let chat = $(chatInput).val();
-    //         if (chat.length > 0) {
-    //             $(chatInput).val('');
-    //             $(chatInput).focus();
-    //             sendChat(chat);
-    //         }
-    //     }
-    // });
+    $(sendIcon).click(function () {
+        let text = $(chatInput).val();
+        if (text.length > 0) {
+            // pubsub.publish('chat', {
+            //     message: text
+            // });
+            addNewMsg("user", text);
+            $(chatInput).val('');
+            textAreaInputEvent();
+        }
+    });
 }
 
 function expandChat() {
@@ -139,6 +101,20 @@ function setChatConClass() {
 
 }
 
+function textAreaInputEvent() {
+    let textLength = $(chatInput).val().length;
+    if (textLength > 0) {
+        $(sendIcon).css('opacity', '1');
+        wordCountText.text($(chatInput).val().length + '/2000');
+    } else if (textLength == 0) {
+        $(sendIcon).css('opacity', '0');
+        wordCountText.text('0/2000');
+    } else if (textLength > 2000) {
+        wordCountText.text('2000/2000');
+        chatInput.val(chatInput.val().substring(0, 2000));
+    }
+}
+
 pubsub.subscribe('chat', function (data) {
     //console.log(color[data.message]);
     bloomCon.css('background', color[data.message])
@@ -146,4 +122,4 @@ pubsub.subscribe('chat', function (data) {
     $("#arrow-icon svg").attr("class", `arrow-icon-${data.message}`);
     $("#feedback-icon svg").attr("class", `arrow-icon-${data.message}`);
     $("#feedback-container").css("border-color", icon[data.message]);
-}); 
+});
