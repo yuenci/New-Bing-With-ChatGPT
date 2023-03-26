@@ -1,5 +1,5 @@
 - [X] tray menu
-- [ ] global shotkey
+- [X] global hotkey
 - [ ] search bar
 - [ ] history(indexDB, [aircode](https://aircode.io/dashboard))
 - [ ] background running
