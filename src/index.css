@@ -716,6 +716,9 @@ input:checked+.slider:before {
   border: none;
   outline: none;
   border-radius: 6px;
+  cursor: pointer;
+  padding: 0 13px;
+  background-color: #f3f6f9;
 }
 
 #modal-input {
