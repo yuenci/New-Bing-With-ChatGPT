@@ -5,6 +5,7 @@ import AddFeedback from './feedback.js';
 import AddMessage from './message.js';
 import { addNewMsg, scrollToBottom } from './message.js';
 import { loadSearchPageContent } from './search.js';
+import { AddKeyModal } from './utils.js';
 
 
 
@@ -21,6 +22,7 @@ export function loadChatPage() {
     AddMessage();
     AddChat();
     AddFeedback();
+    AddKeyModal();
     scrollToBottom();
 }
 

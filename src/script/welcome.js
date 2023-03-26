@@ -38,6 +38,7 @@ export function AddHeader(type = "chat") {
   document.body.appendChild(header);
   addHeaderEvent(header);
   active(type);
+  addMenuEvent();
 }
 
 function addHeaderEvent(dom) {
@@ -158,4 +159,50 @@ function active(type) {
     chatText.css('font-weight', 'bold');
     chatIconConatiner.css("border-bottom", "3px solid #174ae4");
   }
+}
+
+let modalShow = false;
+
+function addMenuEvent() {
+  let menu = $('#welcome-header').find('.header-menu');
+  let key = menu.find('#menu-key');
+  let welcome = menu.find('#menu-welcome');
+  let seach = menu.find('#menu-seach');
+
+
+  key.click(function () {
+    let modal = document.getElementById("myModal");
+    if (modalShow) {
+      modal.style.display = "none";
+    } else {
+      modal.style.display = "block";
+    }
+  });
+
+
+
+
+  welcome.click(function () {
+    console.log('welcome click');
+    // change check
+    let check = $(this).find('input');
+    if (check.prop('checked')) {
+      check.prop('checked', false);
+    }
+    else {
+      check.prop('checked', true);
+    }
+  });
+
+  seach.click(function () {
+    console.log('seach click');
+    // change check
+    let check = $(this).find('input');
+    if (check.prop('checked')) {
+      check.prop('checked', false);
+    }
+    else {
+      check.prop('checked', true);
+    }
+  });
 }
