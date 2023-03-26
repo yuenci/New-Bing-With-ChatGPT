@@ -91,18 +91,20 @@ function addSearchEvent(container) {
 
 
 function search(value, engine) {
+    //console.log(engine);
     let url = "";
-    switch (engine) {
-        case "image/bing.png":
-            url = `https://cn.bing.com/search?q=${value}`;
-            break;
-        case "image/google.png":
-            url = `https://www.google.com/search?q=${value}`;
-            break;
-        case "image/baidu.png":
-            url = `https://www.baidu.com/s?wd=${value}`;
-            break;
+
+    if (engine.indexOf("bing") != -1) {
+        url = `https://cn.bing.com/search?q=${value}`;
     }
+    else if (engine.indexOf("google") != -1) {
+        url = `https://www.google.com/search?q=${value}`;
+    }
+    else if (engine.indexOf("baidu") != -1) {
+        url = `https://www.baidu.com/s?wd=${value}`;
+    }
+
+    //console.log(url);
     // window.open(url);
     // open in current window
     window.location.href = url
