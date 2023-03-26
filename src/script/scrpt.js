@@ -7,6 +7,8 @@ import { addNewMsg, scrollToBottom } from './message.js';
 import { loadSearchPageContent } from './search.js';
 
 
+
+
 window.onload = function () {
     //loadChatPage();
     loadSearchPage();

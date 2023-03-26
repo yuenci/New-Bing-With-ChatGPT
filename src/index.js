@@ -113,8 +113,18 @@ let tray = null
 app.whenReady().then(() => {
   tray = new Tray("assets/chatGPT.png")
   const contextMenu = Menu.buildFromTemplate([
-    { label: 'Item1' },
-    { label: 'Item2', },
+    {
+      label: 'Chat',
+      click: () => {
+        BrowserWindow.getFocusedWindow().webContents.send('goToChat', "");
+      }
+    },
+    {
+      label: 'Search',
+      click: () => {
+        BrowserWindow.getFocusedWindow().webContents.send('goToSearch', "");
+      }
+    },
     {
       label: 'Show Search Bar',
       click: () => {
