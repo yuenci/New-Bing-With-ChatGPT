@@ -5,6 +5,6 @@
 - [X] background running
 - [ ] start with system
 - [ ] settings
-- [ ] search page
+- [X] search page
 - [ ] fix: IPC search bar - main
 - [ ] fix: mian bgc - tone switch

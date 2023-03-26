@@ -14,6 +14,23 @@ export function AddHeader(type = "chat") {
       </div>
       <div id="welcome-header-right">
         <img src="./image/menu0.png">
+        <div class="header-menu">
+          <div class="header-menu-item" id="menu-key">Key</div>
+          <div class="header-menu-item" id="menu-welcome">
+            <div>Show Welcome</div>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="header-menu-item" id="menu-seach">
+            <div>Start From Search</div>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
       </div>`;
   let header = document.createElement('div');
   header.id = 'welcome-header';
@@ -41,6 +58,22 @@ function addHeaderEvent(dom) {
   chatIconConatiner.click(function () {
     // console.log('chatIconConatiner click');
     chatActive();
+  });
+
+
+  menuIcon.click(function () {
+    let menu = container.find('.header-menu');
+
+
+    let src = $(this).attr('src');
+    if (src == './image/menu0.png') {
+      $(this).attr('src', './image/menu1.png');
+      menu.show();
+    }
+    else {
+      $(this).attr('src', './image/menu0.png');
+      menu.hide();
+    }
   });
 }
 

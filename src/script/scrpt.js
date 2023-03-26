@@ -10,8 +10,8 @@ import { loadSearchPageContent } from './search.js';
 
 
 window.onload = function () {
-    //loadChatPage();
-    loadSearchPage();
+    loadChatPage();
+    //loadSearchPage();
 }
 
 export function loadChatPage() {
