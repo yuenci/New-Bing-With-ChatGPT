@@ -1,4 +1,4 @@
-import { loadChatPage } from './scrpt.js';
+import { loadChatPage, loadSearchPage } from './scrpt.js';
 export function AddHeader(type = "chat") {
   let content = `
       <div id="welcome-header-left">
@@ -87,12 +87,14 @@ export function AddWelcome() {
 }
 function chatActive() {
   loadChatPage();
+  let body = $("body");
+  body.css("background-image", "none");
+  body.attr("class", "linear-creative");
 }
 
 
 function searchActive() {
-  $("body").empty();
-  AddHeader("search");
+  loadSearchPage();
 }
 
 

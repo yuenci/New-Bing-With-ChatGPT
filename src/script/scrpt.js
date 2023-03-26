@@ -4,10 +4,12 @@ import AddChat from './chat.js';
 import AddFeedback from './feedback.js';
 import AddMessage from './message.js';
 import { addNewMsg, scrollToBottom } from './message.js';
+import { loadSearchPageContent } from './search.js';
 
 
 window.onload = function () {
-    loadChatPage();
+    //loadChatPage();
+    loadSearchPage();
 }
 
 export function loadChatPage() {
@@ -20,9 +22,10 @@ export function loadChatPage() {
     scrollToBottom();
 }
 
-function loadSearchPage() {
+export function loadSearchPage() {
     removeAll();
-    AddHeader();
+    AddHeader("search");
+    loadSearchPageContent();
 }
 
 function removeAll() {
