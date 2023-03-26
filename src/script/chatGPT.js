@@ -2,15 +2,24 @@ import { OPENAI_API_KEY } from "../conf.js";
 
 
 async function chatGPT() {
-    console.log("Send");
+    let messages;
     let messageDoms = $(".message");
-    let messages = [{ "role": "system", "content": "You are a helpful assistant." }];
+    let tone = $("body").attr("class");
+    console.log(tone);
+    if (tone === undefined) {
+        messages = [{ "role": "system", "content": `You are a helpful assistant ` }];
+
+    } else {
+        tone = tone.split("-")[1];
+        messages = [{ "role": "system", "content": `You are a helpful assistant with ${tone} tone` }];
+    }
 
     messageDoms.each(function (index, element) {
         let role = $(element).attr("class").split(" ")[1];
         let content = $(element).find(".message-text").text();
         messages.push({ role, content });
     });
+
 
     return new Promise((resolve, reject) => {
         fetch("https://api.openai.com/v1/chat/completions", {

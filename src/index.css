@@ -444,7 +444,8 @@ body {
 }
 
 #message-bottom {
-  height: 110px;
+  height: 160px;
+  /* background-color: #006880; */
 }
 
 .message {

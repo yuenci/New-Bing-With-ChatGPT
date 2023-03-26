@@ -79,6 +79,9 @@ function addEvent(dom) {
             $(chatInput).val('');
             textAreaInputEvent();
             AddLoading();
+
+            shortenChatBox();
+
             chatGPT().then((response) => {
                 addNewMsg("assistant", response);
                 removeLoading();
@@ -103,22 +106,38 @@ function addEvent(dom) {
             $(chatInput).val($(chatInput).val() + '\r\n');
         }
         else if (e.which == 13) {
-            //console.log('enter');
             $(sendIcon).click();
         }
     });
 }
 
+function expanChatBox() {
+    chatCon.attr('class', 'chat-input-con-expand-plus');
+    wordCount.attr('class', 'word-count-plus');
+    chatInput.attr('class', 'chat-input-plus');
+}
+
+function shortenChatBox() {
+    chatCon.attr('class', 'chat-input-con-expand');
+    wordCount.attr('class', '');
+    chatInput.attr('class', '');
+}
+
+function detectTextAreaHeight() {
+    let height = $(chatInput).scrollTop();
+    if (height !== 0) {
+        expanChatBox();
+    }
+}
+
+
+
 function expandChat() {
     let chatConClass = chatCon.attr('class');
     if (chatConClass === "chat-input-con-expand") {
-        chatCon.attr('class', 'chat-input-con-expand-plus');
-        wordCount.attr('class', 'word-count-plus');
-        chatInput.attr('class', 'chat-input-plus');
+        expanChatBox();
     } else {
-        chatCon.attr('class', 'chat-input-con-expand');
-        wordCount.attr('class', '');
-        chatInput.attr('class', '');
+        shortenChatBox();
     }
 }
 
@@ -143,6 +162,8 @@ function textAreaInputEvent() {
         wordCountText.text('2000/2000');
         chatInput.val(chatInput.val().substring(0, 2000));
     }
+
+    detectTextAreaHeight();
 }
 
 pubsub.subscribe('chat', function (data) {
