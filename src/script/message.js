@@ -28,8 +28,8 @@ export function addNewMsg(type, text) {
 
     $container.append(msg);
 
-    setTimeout(function () {
-        let height = container.scrollHeight;
-        container.scrollTo({ top: height, behavior: 'smooth' })
-    }, 100);
+
+    let bottom = document.querySelector('#message-bottom');
+    bottom.scrollIntoView({ behavior: 'smooth' });
+
 }

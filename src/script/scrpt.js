@@ -20,4 +20,10 @@ window.onload = function () {
     addNewMsg('bot', 'hello222')
     addNewMsg('user', 'hello111')
     addNewMsg('bot', 'hello222')
+    addNewMsg('bot', 'hello222')
+    addNewMsg('bot', 'hello222')
+    addNewMsg('user', 'hello111')
+    addNewMsg('bot', 'hello222')
+    addNewMsg('bot', 'hello222')
+    addNewMsg('bot', 'hello222')
 }

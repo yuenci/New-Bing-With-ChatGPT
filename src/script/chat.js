@@ -1,5 +1,6 @@
 import { color, icon, pubsub } from "./StatusContainer.js";
 import { addNewMsg } from "./message.js";
+import chatGPT from "./chatGPT.js";
 
 export default function AddChat() {
     let content = `
@@ -94,7 +95,7 @@ function expandChat() {
 
 function setChatConClass() {
     let chatConClass = chatCon.attr('class');
-    console.log(chatConClass);
+    //console.log(chatConClass);
     if (chatConClass == undefined) {
         chatCon.attr('class', 'chat-input-con-expand');
     }
