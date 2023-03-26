@@ -1,0 +1,6 @@
+- [ ]  global shotkey
+- [ ]  search bar 
+- [ ]  history(indexDB, [aircode](https://aircode.io/dashboard))
+- [ ]  background running
+- [ ]  start with system
+- [ ]  settings
