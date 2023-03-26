@@ -1,19 +1,22 @@
-import { loadChatPage, loadSearchPage } from './scrpt.js';
+import { loadChatPage, loadSearchPage, getImagePath } from './scrpt.js';
+
+let path = getImagePath();
+
 export function AddHeader(type = "chat") {
   let content = `
       <div id="welcome-header-left">
-        <img src="./image/microsoft.png" id="microsoft-icon">
+        <img src="${path}/microsoft.png" id="microsoft-icon">
         <div class="welcome-header-icon-con">
-          <img src="./image/search0.svg">
+          <img src="${path}/search0.svg">
           <div>SRAECH</div>
         </div>
         <div class="welcome-header-icon-con"">
-                <img src=" ./image/chat0.svg">
+                <img src="${path}/chat0.svg">
           <div>CHAT</div>
         </div>
       </div>
       <div id="welcome-header-right">
-        <img src="./image/menu0.png">
+        <img src="${path}/menu0.png">
         <div class="header-menu">
           <div class="header-menu-item" id="menu-key">Key</div>
           <div class="header-menu-item" id="menu-welcome">
@@ -82,7 +85,7 @@ export function AddWelcome() {
   AddHeader();
   let content = `
     <div id="welcome-body">
-      <img src="./image/bing.svg" id="bing-icon">
+      <img src="${path}/bing.svg" id="bing-icon">
       <h1>Welcome to the new Bing</h1>
       <div id="welcome-body-subtitle">Your AI-powered copilot for the web.</div>
       <div id="card-container">
@@ -142,20 +145,20 @@ function active(type) {
   let chatIconConatiner = container.find('.welcome-header-icon-con').eq(1);
 
   if (type == "search") {
-    searchIcon.attr('src', "./image/search1.svg");
+    searchIcon.attr('src', `${path}/search1.svg`);
     searchText.css('font-weight', 'bold');
     searchIconConatiner.css("border-bottom", "3px solid #174ae4");
 
-    chatIcon.attr('src', "./image/chat0.svg");
+    chatIcon.attr('src', `${path}/chat0.svg`);
     chatText.css('font-weight', 'normal');
     chatIconConatiner.css("border-bottom", "3px solid transparent");
   }
   else if (type == "chat") {
-    searchIcon.attr('src', "./image/search0.svg");
+    searchIcon.attr('src', `${path}/search0.svg`);
     searchText.css('font-weight', 'normal');
     searchIconConatiner.css("border-bottom", "3px solid transparent");
 
-    chatIcon.attr('src', "./image/chat1.svg");
+    chatIcon.attr('src', `${path}/chat1.svg`);
     chatText.css('font-weight', 'bold');
     chatIconConatiner.css("border-bottom", "3px solid #174ae4");
   }

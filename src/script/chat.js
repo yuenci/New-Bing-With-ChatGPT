@@ -3,16 +3,19 @@ import { color, icon, pubsub } from "./StatusContainer.js";
 import { addNewMsg } from "./message.js";
 import chatGPT from "./chatGPT.js";
 import { AddLoading, removeLoading } from "./loading.js";
+import { getImagePath } from './scrpt.js';
+
+let path = getImagePath();
 
 export default function AddChat() {
     let content = `
      <div class="bloom-con-expand" id="bloom-con">
-        <img src="./image/broom.svg" id="bloom-icon">
+        <img src="${path}/broom.svg" id="bloom-icon">
         <div>New topic</div>
       </div>
       <div id="chat-right">
         <div id="chat-input-con">
-                <img src="./image/chat.svg" id="chat-icon">
+                <img src="${path}/chat.svg" id="chat-icon">
                 <textarea   placeholder="Ask me anything..." id="chat-input" ></textarea>
                 <div id="arrow-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
@@ -22,7 +25,7 @@ export default function AddChat() {
         </div>
         <div id="word-count">
             <div id="word-count-text">0/2000</div>
-            <img src="./image/pined.svg" id="word-count-icon">
+            <img src="${path}/pined.svg" id="word-count-icon">
         </div>
       </div>
     `;

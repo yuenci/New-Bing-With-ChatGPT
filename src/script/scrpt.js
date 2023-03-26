@@ -13,6 +13,7 @@ import { AddKeyModal } from './utils.js';
 window.onload = function () {
     loadChatPage();
     //loadSearchPage();
+    console.log(getImagePath());
 }
 
 export function loadChatPage() {
@@ -34,4 +35,11 @@ export function loadSearchPage() {
 
 function removeAll() {
     $("body").empty();
+}
+
+export function getImagePath() {
+    // get mete tag data <meta name="image-path" content="src/image">
+    let meta = document.querySelector('meta[name="image-path"]');
+    let path = meta.getAttribute('content');
+    return path;
 }
