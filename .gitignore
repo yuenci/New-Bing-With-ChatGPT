@@ -87,3 +87,6 @@ typings/
 
 # Electron-Forge
 out/
+
+config.js
+conf.js

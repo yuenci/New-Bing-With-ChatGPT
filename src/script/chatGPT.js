@@ -1,10 +1,16 @@
-import { OPENAI_API_KEY } from "../config.js";
+import { OPENAI_API_KEY } from "../conf.js";
 
-async function chatGPT(text) {
 
-    text = "Please give me the filename a short description and a few relevant tags() of the code snippet  below, use json format. " +
-        "every tag should be single word. filename use snake case "
-        + text;
+async function chatGPT() {
+    console.log("Send");
+    let messageDoms = $(".message");
+    let messages = [{ "role": "system", "content": "You are a helpful assistant." }];
+
+    messageDoms.each(function (index, element) {
+        let role = $(element).attr("class").split(" ")[1];
+        let content = $(element).find(".message-text").text();
+        messages.push({ role, content });
+    });
 
     return new Promise((resolve, reject) => {
         fetch("https://api.openai.com/v1/chat/completions", {
@@ -15,16 +21,14 @@ async function chatGPT(text) {
             },
             body: JSON.stringify({
                 "model": "gpt-3.5-turbo",
-                "messages": [{ "role": "user", "content": `${text}` }]
+                "messages": messages
             })
         })
             .then(response => response.json())
             .then(data => {
-                //console.log(data);
+                console.log(data);
                 let content = data.choices[0].message.content;
-                let jsonForm = JSON.parse(content);
-                console.log(jsonForm);
-                resolve(jsonForm);
+                resolve(content);
             })
             .catch(error => {
                 console.error(error);

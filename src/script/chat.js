@@ -1,6 +1,7 @@
 import { color, icon, pubsub } from "./StatusContainer.js";
 import { addNewMsg } from "./message.js";
 import chatGPT from "./chatGPT.js";
+import { AddLoading, removeLoading } from "./loading.js";
 
 export default function AddChat() {
     let content = `
@@ -44,7 +45,7 @@ function addEvent(dom) {
     pinedIcon = $(dom).find('#word-count-icon');
 
     $(chatInput).on('focus', function () {
-        console.log('focus');
+        //console.log('focus');
         bloomCon.find('div').hide();
         bloomCon.attr('class', 'bloom-con-shorten');
         chatCon.css('width', 'calc(100%)');
@@ -69,6 +70,7 @@ function addEvent(dom) {
 
     $(sendIcon).click(function () {
         let text = $(chatInput).val();
+
         if (text.length > 0) {
             // pubsub.publish('chat', {
             //     message: text
@@ -76,6 +78,33 @@ function addEvent(dom) {
             addNewMsg("user", text);
             $(chatInput).val('');
             textAreaInputEvent();
+            AddLoading();
+            chatGPT().then((response) => {
+                addNewMsg("assistant", response);
+                removeLoading();
+            });
+        }
+    });
+
+
+    // chatInput enter event
+    $(chatInput).keypress(function (e) {
+
+
+        // ctrl + enter
+        // if (e.ctrlKey && e.which == 13) {
+        //     console.log('ctrl + enter');
+        //     $(chatInput).val($(chatInput).val() + '\r\n');
+        // }
+
+        // shift + enter
+        if (e.shiftKey && e.which == 13) {
+            //console.log('shift + enter');
+            $(chatInput).val($(chatInput).val() + '\r\n');
+        }
+        else if (e.which == 13) {
+            //console.log('enter');
+            $(sendIcon).click();
         }
     });
 }
