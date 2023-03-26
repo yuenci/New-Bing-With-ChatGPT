@@ -62,6 +62,10 @@ function addEvent(dom) {
 
     });
 
+    $(bloomCon).click(function () {
+        console.log('bloomCon click');
+    });
+
 
     $(chatInput).on("input", textAreaInputEvent);
 

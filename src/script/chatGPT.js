@@ -5,7 +5,7 @@ async function chatGPT() {
     let messages;
     let messageDoms = $(".message");
     let tone = $("body").attr("class");
-    console.log(tone);
+    //console.log(tone);
     if (tone === undefined) {
         messages = [{ "role": "system", "content": `You are a helpful assistant ` }];
 

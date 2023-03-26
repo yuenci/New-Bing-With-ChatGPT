@@ -27,9 +27,11 @@ export function addNewMsg(type, text) {
     let $container = $(container);
 
     $container.append(msg);
+    scrollToBottom();
+}
 
 
+export function scrollToBottom() {
     let bottom = document.querySelector('#message-bottom');
     bottom.scrollIntoView({ behavior: 'smooth' });
-
 }
