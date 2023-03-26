@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, Tray, globalShortcut } = require('electron');
+const { app, BrowserWindow, Menu, Tray, globalShortcut, screen } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -22,7 +22,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   // hide window instead of close
   mainWindow.on('close', function (event) {
@@ -30,9 +30,28 @@ const createWindow = () => {
       event.preventDefault();
       mainWindow.hide();
     }
-
     return false;
   });
+
+  createSearchBar();
+};
+
+const createSearchBar = () => {
+  searchBar = new BrowserWindow({
+    width: 650,
+    height: 50,
+    frame: false,
+    transparent: true,
+  });
+
+  searchBar.loadFile(path.join(__dirname, 'searchBar.html'));
+
+  searchBar.webContents.openDevTools();
+
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize
+  const x = Math.floor((width - searchBar.getSize()[0]) / 2)
+  const y = 0
+  searchBar.setPosition(x, y)
 };
 
 // This method will be called when Electron has finished
