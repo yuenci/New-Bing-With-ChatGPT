@@ -70,12 +70,12 @@ function addHeaderEvent(dom) {
 
 
     let src = $(this).attr('src');
-    if (src == "./image/menu0.png") {
-      $(this).attr('src', "./image/menu1.png");
+    if (src == `${path}/menu0.png`) {
+      $(this).attr('src', `${path}/menu1.png`);
       menu.show();
     }
     else {
-      $(this).attr('src', "./image/menu0.png");
+      $(this).attr('src', `${path}/menu0.png`);
       menu.hide();
     }
   });
