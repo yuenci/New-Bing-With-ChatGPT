@@ -18,7 +18,7 @@ You can refine your search by using keywords or phrases. For example, if you are
 You can try out a demo of New Bing at https://yuenci.github.io/New-Bing-With-ChatGPT/.
 
 ## License
-New Bing is licensed under the MIT license. See the LICENSE file for more details.
+New Bing is licensed under the GPLV3 license. See the [LICENSE](./LICENSE) file for more details.
 
 ## Contributing
 If you would like to contribute to New Bing, please open a pull request or issue on GitHub. We welcome contributions of all kinds, including bug fixes, feature requests, and code contributions.
