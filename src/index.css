@@ -175,6 +175,7 @@ body {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
   box-sizing: border-box;
   padding: 0 30px;
@@ -734,4 +735,19 @@ input:checked+.slider:before {
 .modal-content a {
   color: #2196F3;
   text-decoration: none;
+}
+
+
+@media screen and (max-width: 600px) {
+  #welcome-header {
+    padding: 0 10px;
+  }
+
+  #welcome-body {
+    padding: 0 10px;
+  }
+
+  #welcome-body h1 {
+    text-align: center;
+  }
 }

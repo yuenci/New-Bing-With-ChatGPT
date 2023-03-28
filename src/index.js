@@ -35,7 +35,7 @@ const createWindow = () => {
     return false;
   });
 
-  //createSearchBar();
+  // createSearchBar();
 };
 
 const createSearchBar = () => {
