@@ -103,7 +103,7 @@ export function AddWelcome() {
           <div class="card-content">Write a haiku about crocodiles in outer space in the voice of a pirate</div>
         </div>
       </div>
-      <div>
+      <div id="body-info">
         Let's learn together. Bing is powered by AI, so surprises and mistakes are possible. Make sure to check the
         facts, and
         <a href="">share feedback</a>

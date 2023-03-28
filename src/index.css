@@ -750,4 +750,8 @@ input:checked+.slider:before {
   #welcome-body h1 {
     text-align: center;
   }
+
+  #body-info {
+    text-align: center;
+  }
 }
