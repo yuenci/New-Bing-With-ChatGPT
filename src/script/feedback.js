@@ -1,3 +1,6 @@
+import { pubsub } from "./StatusContainer.js";
+
+
 export default function AddFeedback() {
   let content = `
     <div id="feedback-icon">
@@ -13,5 +16,11 @@ export default function AddFeedback() {
   document.body.appendChild(feedback);
   addEvent(feedback);
 }
+
+pubsub.subscribe('tone', function (data) {
+  $("#feedback-icon svg").attr("class", `arrow-icon-${data.message}`);
+  $("#feedback-container").css("border-color", icon[data.message]);
+});
+
 
 function addEvent(dom) { }

@@ -182,8 +182,6 @@ pubsub.subscribe('tone', function (data) {
     bloomCon.css('background', color[data.message])
     $("body").attr("class", `linear-${data.message}`);
     $("#arrow-icon svg").attr("class", `arrow-icon-${data.message}`);
-    $("#feedback-icon svg").attr("class", `arrow-icon-${data.message}`);
-    $("#feedback-container").css("border-color", icon[data.message]);
 });
 
 
